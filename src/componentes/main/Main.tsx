@@ -5,13 +5,13 @@ import './Main.css';
 
 type FilmesType = {
   id: number;
-  sinopse: string;
+   titulo: string;
   descricao: string;
   imagem: string;
 };
 
 //
-const URL_API = "http://localhost:3000/filmes"; // Substitua pela URL real da sua API
+const URL_API = "http://localhost:3000/filmes";
 
 export default function Main() {
   const [texto, setTexto] = useState("");
@@ -46,16 +46,16 @@ export default function Main() {
         </div>
       </div>
 
-      <main className="content_main">
+      <main className="content-main">
         {filmes
           .filter((filme) =>
-            filme.sinopse.toLowerCase().includes(texto.toLowerCase())
+            filme.descricao.toLowerCase().includes(texto.toLowerCase())
           )
           .map((filme) => (
             <Filme
               key={filme.id}
+              titulo={filme.titulo}
               descricao={filme.descricao}
-              sinopse={filme.sinopse}
               imagem={filme.imagem}
             />
           ))}
